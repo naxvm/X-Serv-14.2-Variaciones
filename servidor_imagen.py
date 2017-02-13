@@ -14,12 +14,16 @@ mySocket.bind(('localhost', 1235))
 mySocket.listen(5)
 
 
-
-while True:
-    print('Waiting for connections')
-    (recvSocket, address) = mySocket.accept()
-    print('HTTP request received:', recvSocket.recv(1024))
-    recvSocket.send(bytes('HTTP/1.1 200 OK\r\n\r\n' +
-                    '<html><body><h1>Hello World!<img src="http://2.bp.blogspot.com/_63jCiXixFMk/R8xviDmjAII/AAAAAAAAAGQ/vgU_rFcyVO0/S1600-R/gsyc.jpg"></h1></body></html>' +
-                    '\r\n', 'utf-8'))
-    recvSocket.close()
+try:
+    while True:
+        print('Waiting for connections')
+        (recvSocket, address) = mySocket.accept()
+        print('HTTP request received:', recvSocket.recv(1024))
+        recvSocket.send(bytes('HTTP/1.1 200 OK\r\n\r\n' +
+                        '<html><body><h1>Hello World!' +
+                        '<img src="http://2.bp.blogspot.com/_63jCiXixFMk/R8xviDmjAII/AAAAAAAAAGQ/vgU_rFcyVO0/S1600-R/gsyc.jpg"></h1></body></html>' +
+                        '\r\n', 'utf-8'))
+        recvSocket.close()
+except KeyboardInterrupt:
+    print('Closing binded socket')
+    mySocket.close()
