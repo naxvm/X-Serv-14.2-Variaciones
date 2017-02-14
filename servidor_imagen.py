@@ -22,6 +22,7 @@ try:
         recvSocket.send(bytes('HTTP/1.1 200 OK\r\n\r\n' +
                         '<html><body><h1>Hello World!</h1>' +
                         '<img src="https://assets.pcmag.com/media/images/532520-pangolin-v-day-google-doodle.jpg?thumb=y&width=810&height=455"></body></html>' +
+                        '<img src="http://www.oasisinet.com/wp-content/uploads/2013/11/facebook-logo.jpg">' +                              
                         '\r\n', 'utf-8'))
         recvSocket.close()
 except KeyboardInterrupt:
